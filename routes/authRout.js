@@ -7,7 +7,10 @@ const router=express.Router();
 
 //routing
 // register router
-
 router.post('/register',Controller.registerController)
+
+// login router
+
+router.post('/login',Controller.loginController)
 
 module.exports=router;
