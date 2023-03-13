@@ -10,3 +10,78 @@
 
 /* font-family: 'Playfair Display', serif;
 font-family: 'Poppins', sans-serif; */
+
+ /* navbar */
+
+.navbar{
+  font-family: 'Poppins', sans-serif;
+  text-transform: capitalize;
+  line-height: 25px;
+  box-shadow: 0 7px 8px -8px gray;
+}
+
+.active{
+  color: rgb(116, 114, 112);
+  border-bottom: 2px solid rgb(93, 29, 29);
+}
+
+.navbar-brand{
+  font-family: 'Playfair Display', serif;
+  line-height: 25px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+/* Not found page */
+.page, .register{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
+.page-btn {
+  color: black;
+  border: 1px solid black;
+  text-decoration: none;
+  padding: 10px;
+  margin-top: 10px;
+}
+.page-btn:hover {
+  background-color: black;
+  color: white;
+}
+
+/* =========contact us ========= */
+.contact{
+  margin: 0;
+  padding: 0;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* footer part */
+.footer {
+  color: white;
+  padding: 25px;
+  background: #000000; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #434343,
+    #000000
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #434343, #000000);
+}
+
+.footer a {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+}
+
+.footer a:hover {
+  color: #ffefba;
+  border-bottom: 1px solid #ffefba;
+}
