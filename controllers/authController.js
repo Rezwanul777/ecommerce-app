@@ -10,26 +10,26 @@ exports.registerController=async(req,res)=>{
       const{name,email,address,password,phone}=req.body;
       // 2. all fields require validation
       if(!name.trim()){
-         return res.send({error:"name is required"})
+         return res.send({message:"name is required"})
       }
       if(!email){
-         return res.send({error:"email is required"})
+         return res.send({message:"email is required"})
       }
       if(!password){
-         return res.send({error:"password is required"})
+         return res.send({message:"password is required"})
       }
       if(!address.trim()){
-         return res.send({error:"address is required"})
+         return res.send({message:"address is required"})
       }
       if(!phone){
-         return res.send({error:"phone is required"})
+         return res.send({message:"phone is required"})
       }
       // check user
       const existingUser=await userModel.findOne({email})
       // check existing user
       if(existingUser){
          return res.status(200).send({
-            success:true,
+            success:false,
             message:"Already exists please login",
 
          })
