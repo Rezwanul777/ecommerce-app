@@ -28,6 +28,10 @@ const userSchema=new Schema({
       trim: true, 
       required: true,
     },
+    answer:{
+      type: String,
+      required:true,
+    },
 
     role:{
       type:Number,
