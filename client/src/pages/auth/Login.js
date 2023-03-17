@@ -54,8 +54,12 @@ const handleSubmit=async(e)=>{
                
                 <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder='Enter your Password'required/>
              </div>
-             
-             <button type="submit" className="btn btn-primary">login</button>
+             <div className="mb-3">
+             <button type="button" className="btn btn-danger" onClick={()=>{navigate('/forgot-password')}}>Forgot Password</button>
+             </div>
+            
+             <button type="submit" className="btn btn-primary px-5">login</button>
+            
           </form>
        </div>
 
