@@ -17,7 +17,13 @@ router.post('/register',Controller.registerController)
 
 router.post('/login',Controller.loginController)
 
-// test route
+// test router
 router.get('/test',requireSignIn,isAdmin,Controller.testController)
+
+// protected route
+
+router.get('/user-auth',requireSignIn,(req,res)=>{
+   res.status(200).send({ok:true})
+})
 
 module.exports=router;
