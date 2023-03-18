@@ -7,7 +7,7 @@ require("dotenv").config();
 exports.registerController=async(req,res)=>{
    try {
       // 1. destructure name, email, password from req.body
-      const{name,email,address,password,phone}=req.body;
+      const{name,email,address,password,phone,answer}=req.body;
       // 2. all fields require validation
       if(!name.trim()){
          return res.send({message:"name is required"})
@@ -20,6 +20,9 @@ exports.registerController=async(req,res)=>{
       }
       if(!address.trim()){
          return res.send({message:"address is required"})
+      }
+      if(!answer.trim()){
+         return res.send({message:"answer is required"})
       }
       if(!phone){
          return res.send({message:"phone is required"})
@@ -38,7 +41,7 @@ exports.registerController=async(req,res)=>{
       const hashedPassword=await hashPassword(password)
       // save
       const user=await new userModel({
-         name,email,address,phone,password:hashedPassword
+         name,email,address,phone,password:hashedPassword,answer
       }).save();
       res.status(201).send({
          success:true,
@@ -134,7 +137,7 @@ exports.forgotPasswordController=async(req,res)=>{
             message:"wrong email or answer"
          })
       }
-      const hashed=await hashPassword(password)
+      const hashed=await hashPassword(newPassword)
       await userModel.findByIdAndUpdate(user._id,{password:hashed});
       res.status(200).send({
          success:true,
