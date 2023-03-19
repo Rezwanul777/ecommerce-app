@@ -62,6 +62,20 @@ font-family: 'Poppins', sans-serif; */
   justify-content: center;
 }
 
+/* ================
+====dashboard
+=================== */
+
+.dashboard {
+  margin-top: 100px !important;
+}
+
+.dashboard-menu h4 {
+  background-color: #434343 !important;
+  color: white;
+  padding: 20px 0px;
+}
+
 /* footer part */
 .footer {
   color: white;
