@@ -21,8 +21,11 @@ router.get('/single-product/:slug',Controller.getSingleProductController)
 
 router.get('/product-photo/:productid',Controller.getPhotoController)
 
+// delete product router
+router.delete("/delete-product/:productid", requireSignIn, isAdmin,Controller.deleteProductController);
 
-
+// update product router
+router.put('/update-product/:productid',requireSignIn,isAdmin,formidableMiddleware(),Controller.updateProductController)
 
 
 

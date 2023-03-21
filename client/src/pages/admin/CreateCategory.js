@@ -1,8 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AdminMenu from '../../components/layout/AdminMenu'
 import Layout from '../../components/layout/Layout'
 
 const CreateCategory = () => {
+   const [categories,setCategories]=useState([])
+
+   // get all categories
+
+   const getAllCategory=async()=>{
+      try {
+         
+      } catch (error) {
+         
+      }
+   }
   return (
    <Layout>
       <div className="container-fluid m-3 p-3">

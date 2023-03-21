@@ -108,3 +108,73 @@ exports.getPhotoController=async(req,res)=>{
          })
    }
 }
+
+// dlete product controller
+exports.deleteProductController=async(req,res)=>{
+   try {
+     const product=await productModel.findByIdAndDelete(req.params.productid).select("-photo")
+     res.status(200).send({
+      success: true,
+      message: "Product Deleted successfully",
+      product
+    }); 
+   } catch (error) {
+      console.log(error);
+       res.status(500).send({
+         message:"error in get single product",
+         error:error.message
+         })
+   }
+}
+
+// update product controller
+exports.updateProductController=async(req,res)=>{
+
+   try {
+      const{name,slug,description,price,category,quantity,shipping}= req.fields;
+      const { photo } = req.files;
+      // console.log(req.fields);
+      // console.log(req.files);
+
+      // validation
+      switch (true) {
+         
+         case !name?.trim():
+          return res.status(500).send({error:"Name is required"}) 
+
+         case !description?.trim():
+          return res.status(500).send({error:"Description is required"})  
+
+         case !price?.trim():
+          return res.status(500).send({error:"Price is required"})  
+
+         case !category?.trim():
+          return res.status(500).send({error:"Category is required"})  
+
+         case !quantity?.trim():
+          return res.status(500).send({error:"Quantity is required"})
+
+          case photo && photo.size > 1000000:
+          return res.json({ error: "Image should be less than 1mb in size" }); 
+            
+      }
+      const products=await productModel.findByIdAndUpdate(req.params.productid,{...req.fields,slug:slugify(name)},{new:true})
+      if(photo){
+      products.photo.data = fs.readFileSync(photo.path);
+      products.photo.contentType = photo.type;
+      }
+      await products.save()
+      res.status(201).send({
+         success: true,
+         message: "Product updated Successfully",
+         products,
+       });
+   } catch (error) {
+      console.log(error);
+      res.status(500).send({
+         success:false,
+         error,
+         message:"Error in update product"
+      })
+   }
+}
