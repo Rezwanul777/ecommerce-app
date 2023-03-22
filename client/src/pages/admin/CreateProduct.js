@@ -4,12 +4,12 @@ import { toast } from 'react-hot-toast';
 import AdminMenu from '../../components/layout/AdminMenu';
 import Layout from '../../components/layout/Layout';
 import { Select} from 'antd';
-import { Navigate, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 
 const { Option } = Select;
 
 const CreateProduct = () => {
-   const navigate=useNavigate()
+  
 const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -32,6 +32,8 @@ const [categories, setCategories] = useState([]);
       toast.error("something wrong in get all category")
    }
 }
+// hook
+const navigate=useNavigate()
 useEffect(() => {
    getAllCategory();
  }, []);
@@ -50,8 +52,8 @@ useEffect(() => {
      productData.append("category", category)
 
      const {data}= await axios.post("/api/v1/create-product",productData)
-     if(data?.success){
-      toast.error(data?.message)
+     if(data?.error){
+      toast.error(data.error)
      
      }else{
       toast.success("product created successfully")
