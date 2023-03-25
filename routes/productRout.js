@@ -27,6 +27,16 @@ router.delete("/delete-product/:productid", requireSignIn, isAdmin,Controller.de
 // update product router
 router.put('/update-product/:productid',requireSignIn,isAdmin,formidableMiddleware(),Controller.updateProductController)
 
+//filter product
+router.post("/product-filters", Controller.productFiltersController);
+
+//product count
+router.get("/product-count", Controller.productCountController);
+
+// product-perpage
+
+router.get("/product-page/:page",Controller.productPageController)
+
 
 
 
