@@ -27,15 +27,19 @@ router.delete("/delete-product/:productid", requireSignIn, isAdmin,Controller.de
 // update product router
 router.put('/update-product/:productid',requireSignIn,isAdmin,formidableMiddleware(),Controller.updateProductController)
 
-//filter product
+//filter product router
 router.post("/product-filters", Controller.productFiltersController);
 
-//product count
+//product count router
 router.get("/product-count", Controller.productCountController);
 
-// product-perpage
+// product-perpage router
 
 router.get("/product-page/:page",Controller.productPageController)
+
+// product search router
+
+router.get('/product-search/:keyword',Controller.productSearchController)
 
 
 
